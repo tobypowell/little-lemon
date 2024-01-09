@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 5rem; 80px */
+}
+
+header a#logo {
+  height: 80px;
+  padding-top: 1.25rem;
+}

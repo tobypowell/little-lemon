@@ -1,20 +1,22 @@
 import React from 'react';
-import Navigation from './Navigation';
+import Navigation from '../Navigation/Navigation';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer>
-      <div className='footer_logo'>
-        <img
-          src='./imgs/footerLogo.png'
-          alt='Little Lemon'
-          width='128'
-          height='232'
-        />
-      </div>
+    <div id='footer-wrapper'>
+      <footer>
+        <div id='footer-logo'>
+          <img
+            src='./imgs/footerLogo.png'
+            alt='Little Lemon'
+            width='128'
+            height='232'
+          />
+        </div>
 
-      <div className='footer_meta'>
         <Navigation navType='doormat-nav' />
+
         <address>
           <h5>Contact: </h5>
           <p>
@@ -37,8 +39,8 @@ const Footer = () => {
             Instagram
           </a>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 

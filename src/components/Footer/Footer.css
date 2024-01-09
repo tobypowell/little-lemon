@@ -1,0 +1,46 @@
+#footer-wrapper {
+  background-color: var(--leafLight);
+  padding: 3rem var(--global-padding);
+}
+footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--global-padding);
+}
+
+footer a {
+  display: block;
+}
+
+#footer-logo {
+  align-self: center;
+  justify-self: center;
+}
+
+/* FOOTER DOORMAT NAV */
+footer .doormat-nav li {
+  margin: 0;
+}
+footer .doormat-nav a {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--leaf);
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    grid-template-columns: 5fr 2fr 3fr 2fr;
+  }
+  #footer-logo {
+    justify-self: left;
+  }
+  #footer-logo img {
+    max-width: 6rem;
+    height: auto;
+  }
+
+  footer .doormat-nav a {
+    display: block;
+    padding: 0.25rem 0;
+    border-bottom: none;
+  }
+}

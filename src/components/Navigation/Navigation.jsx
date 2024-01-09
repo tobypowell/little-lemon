@@ -1,8 +1,9 @@
 import React from 'react';
+import './Navigation.css';
 
 const Navigation = ({ navType }) => {
   return (
-    <nav className={navType}>
+    <nav className={`navigation ${navType}`}>
       <ul>
         <li>
           <a href='#' title='Home'>
