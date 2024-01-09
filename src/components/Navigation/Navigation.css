@@ -6,6 +6,7 @@
 /* MAIN NAV BAR STYLES */
 .main-nav {
   position: fixed;
+  z-index: 2;
   top: 5rem;
   left: 0;
 
@@ -43,7 +44,7 @@
     position: inherit;
     width: auto;
     height: auto;
-    background-color: transparent;
+
     transform: translateX(0);
   }
   .main-nav ul {

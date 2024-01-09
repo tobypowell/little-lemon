@@ -1,0 +1,30 @@
+#specials {
+  padding: 6rem 0;
+  max-width: var(--tenCol);
+}
+
+#specials .row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 0 var(--global-padding);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--global-padding);
+}
+
+@media screen and (min-width: 768px) {
+  #specials .row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cards {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--global-padding);
+  }
+}

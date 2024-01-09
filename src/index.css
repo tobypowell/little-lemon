@@ -4,6 +4,7 @@
 :root {
   /* SIZES */
   --desktop: 81rem; /* 1296px */
+  --tenCol: 67rem; /* 1072px */
   --global-padding: 1.5rem;
 
   /* COLORS */
@@ -21,6 +22,7 @@
   /* FONT SIZES */
   --baseSize: 1rem; /*16px*/
   --displayTitle: 4rem; /* 64px */
+  --sectionTitleDisplay: 3rem; /* 56px */
   --subTitle: 2.5rem; /* 40px */
   --leadText: 1.125rem; /* 18px */
   --sectionTitle: 1.25rem; /* 20px */
@@ -29,7 +31,8 @@
   --leading: 1.5rem;
 
   /* BORDER RADIUS */
-  --cornerRadius: var(var(--baseSize));
+  --cornerRadius: var(--baseSize);
+  --cornerRadiusSm: 0.5rem;
 }
 /* RESET */
 * {
@@ -43,23 +46,24 @@ body {
   color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  max-width: var(--desktop);
-  margin: 0 auto;
   line-height: var(--leading);
 }
 
 h1,
 h2 {
   font-family: var(--markazi);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 h1 {
   font-size: var(--displayTitle);
+  color: var(--lemon);
+  line-height: var(--displayTitle);
 }
 h2 {
-  font-size: var(--subTitle);
+  font-size: var(--sectionTitleDisplay);
+  line-height: var(--subTitle);
+  margin-bottom: var(--baseSize);
 }
 
 h5 {
@@ -87,8 +91,18 @@ address {
 }
 
 header,
-section {
+footer,
+section,
+.hero {
   padding: 0 var(--global-padding);
+  max-width: var(--desktop);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.subTitle {
+  font-size: var(--subTitle);
+  font-family: var(--markazi);
 }
 
 .lead-text {
@@ -114,4 +128,20 @@ footer {
 }
 main {
   flex: 1 0 auto;
+}
+
+button.cta {
+  border: none;
+  background-color: var(--lemon);
+  padding: 1rem 2rem;
+  border-radius: var(--cornerRadiusSm);
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  button.cta {
+    width: auto;
+  }
 }

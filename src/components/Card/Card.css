@@ -1,0 +1,32 @@
+.card {
+  max-width: 18.75rem;
+  background-color: var(--leafLight);
+  border-radius: var(--cornerRadius);
+  overflow: hidden;
+  color: var(--leaf);
+}
+
+.card .body {
+  padding: 1rem var(--leading) var(--leading);
+}
+
+.card h3 {
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--cardTitle);
+}
+
+.card h3 span {
+  color: var(--salmon);
+}
+
+.card a {
+  font-weight: 700;
+  display: inline-block;
+}
+
+.card a img {
+  margin-left: 0.5rem;
+}

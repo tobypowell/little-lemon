@@ -16,6 +16,9 @@ const Footer = () => {
             width='128'
             height='232'
           />
+          <p className='copyright'>
+            &copy; Little Lemon {new Date().getFullYear()}
+          </p>
         </div>
 
         <Navigation navType='doormat-nav' />

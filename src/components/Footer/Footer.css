@@ -3,6 +3,7 @@
   padding: 3rem var(--global-padding);
 }
 footer {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--global-padding);
@@ -13,8 +14,18 @@ footer a {
 }
 
 #footer-logo {
-  align-self: center;
   justify-self: center;
+}
+
+#footer-logo img {
+  max-width: 4rem;
+  height: auto;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: 0;
 }
 
 /* FOOTER DOORMAT NAV */
@@ -31,6 +42,13 @@ footer .links {
   gap: 1rem;
 }
 
+footer .links a {
+  color: var(--leaf);
+}
+footer .links a:hover {
+  color: var(--salmon);
+}
+
 @media screen and (min-width: 768px) {
   footer {
     grid-template-columns: 5fr 2fr 3fr 2fr;
@@ -39,8 +57,7 @@ footer .links {
     justify-self: left;
   }
   #footer-logo img {
-    max-width: 6rem;
-    height: auto;
+    max-width: 5rem;
   }
 
   footer .doormat-nav a {
