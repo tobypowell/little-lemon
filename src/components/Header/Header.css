@@ -9,3 +9,14 @@ header a#logo {
   height: 80px;
   padding-top: 1.25rem;
 }
+
+button#mobile-nav {
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  button#mobile-nav {
+    display: none;
+  }
+}

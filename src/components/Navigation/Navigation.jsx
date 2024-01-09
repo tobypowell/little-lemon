@@ -1,9 +1,9 @@
 import React from 'react';
 import './Navigation.css';
 
-const Navigation = ({ navType }) => {
+const Navigation = ({ navType, navActive }) => {
   return (
-    <nav className={`navigation ${navType}`}>
+    <nav className={`navigation ${navType} ${navActive ? 'active' : ''}`}>
       <ul>
         <li>
           <a href='#' title='Home'>

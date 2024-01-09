@@ -5,11 +5,23 @@
 
 /* MAIN NAV BAR STYLES */
 .main-nav {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+
+  transform: translateX(100%);
+  background-color: #fff;
+  width: 100%;
+  height: calc(100vh - 5rem);
+  transition: all 0.3s ease-in;
 }
+
+.main-nav.active {
+  transform: translateX(0);
+}
+
 .main-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  margin-top: 10%;
 }
 
 .main-nav li {
@@ -18,7 +30,31 @@
 
 .main-nav a {
   display: inline-block;
+  font-size: 1.5rem;
   font-weight: 800;
   padding: 1.75rem 1rem;
-  display: inline-block;
+  display: block;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .main-nav {
+    display: block;
+    position: inherit;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    transform: translateX(0);
+  }
+  .main-nav ul {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .main-nav a {
+    display: inline-block;
+    margin-top: 0;
+    font-size: var(--base);
+  }
 }
