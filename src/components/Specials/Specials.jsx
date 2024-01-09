@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import CTAButton from '../CTAButton/CTAButton';
 import './Specials.css';
 
 const specials = [
@@ -34,7 +35,8 @@ const Specials = () => {
     <section id='specials'>
       <div className='row'>
         <h2>Specials</h2>
-        <button className='cta'>Online Menu</button>
+
+        <CTAButton>Online Menu</CTAButton>
       </div>
 
       <div className='cards'>

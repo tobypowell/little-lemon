@@ -1,4 +1,5 @@
 import React from 'react';
+import CTAButton from '../CTAButton/CTAButton';
 import './Hero.css';
 
 const Hero = () => {
@@ -15,7 +16,7 @@ const Hero = () => {
             praesent.
           </p>
 
-          <button className='cta'>Reserve a table</button>
+          <CTAButton>Reserve a table</CTAButton>
         </div>
 
         <img

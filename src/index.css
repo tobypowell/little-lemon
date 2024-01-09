@@ -130,16 +130,6 @@ main {
   flex: 1 0 auto;
 }
 
-button.cta {
-  border: none;
-  background-color: var(--lemon);
-  padding: 1rem 2rem;
-  border-radius: var(--cornerRadiusSm);
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-}
-
 @media screen and (min-width: 768px) {
   button.cta {
     width: auto;
