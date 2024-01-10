@@ -1,0 +1,18 @@
+#booking {
+  padding: 6rem var(--global-padding);
+  max-width: var(--tenCol);
+}
+
+#booking h1 {
+  text-align: center;
+}
+
+form.booking-form {
+  margin: 3rem auto;
+  display: grid;
+  max-width: 500px;
+  border-radius: var(--cornerRadius);
+  background-color: var(--leafLight);
+  padding: 3rem;
+  box-shadow: 0px 8px 8px -8px rgba(73, 94, 87, 0.4);
+}

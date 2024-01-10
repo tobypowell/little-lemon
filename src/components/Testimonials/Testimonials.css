@@ -13,13 +13,12 @@ article.testimonial {
   max-width: 18.75rem; /* 300px */
   background-color: #fff;
   padding: 2rem;
-
   justify-content: center;
   border-radius: var(--cornerRadius);
-
   box-shadow: 0px 8px 8px -8px rgba(73, 94, 87, 0.4);
   text-align: center;
 }
+
 article.testimonial h4 {
   color: var(--leaf);
 }

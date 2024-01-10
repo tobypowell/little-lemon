@@ -95,8 +95,57 @@ a.active {
   color: var(--salmon);
 }
 
+button,
+input[type='submit'] {
+  border: none;
+  background-color: var(--lemon);
+  padding: 1rem 2rem;
+  border-radius: var(--cornerRadiusSm);
+  font-weight: 700;
+  font-size: var(--base);
+
+  cursor: pointer;
+  width: 100%;
+
+  transition: all 0.3s ease;
+}
+
+button:hover,
+input[type='submit']:hover {
+  background-color: var(--charcoal);
+  color: var(--leafLight);
+}
+
+button,
+input,
+label,
+textarea,
+select {
+  font-family: inherit;
+}
+
 address {
   font-style: normal;
+}
+
+input,
+select,
+textarea {
+  padding: var(--baseSize);
+  border-radius: var(--cornerRadiusSm);
+  border: 1px solid var(--leaf);
+  font-family: var(--karla);
+  font-size: var(--base);
+  display: block;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+label {
+  font-size: var(--leadText);
+  font-weight: 700;
+  color: var(--leaf);
+  margin-bottom: var(--global-padding);
 }
 
 header,
@@ -140,7 +189,8 @@ main {
 }
 
 @media screen and (min-width: 768px) {
-  button.cta {
+  button.cta,
+  input[type='submit'] {
     width: auto;
   }
 }

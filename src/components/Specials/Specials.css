@@ -6,6 +6,7 @@
 #specials .row {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 2rem;
   padding: 0 var(--global-padding);
 }
