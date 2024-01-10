@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = ({ navType, navActive }) => {
@@ -6,9 +7,9 @@ const Navigation = ({ navType, navActive }) => {
     <nav className={`navigation ${navType} ${navActive ? 'active' : ''}`}>
       <ul>
         <li>
-          <a href='#' title='Home'>
+          <Link to='/' title='Home'>
             Home
-          </a>
+          </Link>
         </li>
         <li>
           <a href='#' title='About'>
@@ -21,9 +22,9 @@ const Navigation = ({ navType, navActive }) => {
           </a>
         </li>
         <li>
-          <a href='#' title='Reservations'>
+          <Link to='/booking' title='Reservations'>
             Reservations
-          </a>
+          </Link>
         </li>
         <li>
           <a href='#' title='Order Online'>

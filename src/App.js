@@ -1,15 +1,18 @@
 import './App.css';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
+import HomePage from './components/Pages/HomePage';
+import BookingPage from './components/Pages/BookingPage';
+import NoMatchPage from './components/Pages/NoMatchPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/booking' element={<BookingPage />} />
+        <Route path='*' element={<NoMatchPage />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,18 +1,21 @@
 import React from 'react';
+import Layout from '../Layout';
 import Hero from '../Hero/Hero';
 import Specials from '../Specials/Specials';
 import Testimonials from '../Testimonials/Testimonials';
 import About from '../About/About';
 
-const Main = () => {
+const HomePage = () => {
   return (
-    <main>
-      <Hero />
-      <Specials />
-      <Testimonials />
-      <About />
-    </main>
+    <>
+      <Layout>
+        <Hero />
+        <Specials />
+        <Testimonials />
+        <About />
+      </Layout>
+    </>
   );
 };
 
-export default Main;
+export default HomePage;
