@@ -1,11 +1,12 @@
 import React from 'react';
+import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import CTAButton from '../CTAButton/CTAButton';
 import './Hero.css';
 
 const Hero = () => {
   return (
-    <section id='hero-wrapper'>
-      <div className='hero'>
+    <FullWidthSection bgColor={'var(--leaf)'}>
+      <div className='container hero'>
         <div className='hero-text'>
           <h1>Little Lemon</h1>
           <p className='subTitle'>Chicago</p>
@@ -25,7 +26,7 @@ const Hero = () => {
           alt='Little Lemon Chicago'
         />
       </div>
-    </section>
+    </FullWidthSection>
   );
 };
 

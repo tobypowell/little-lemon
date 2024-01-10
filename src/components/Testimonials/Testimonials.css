@@ -1,0 +1,25 @@
+.testimonials {
+  padding: 6rem var(--global-padding);
+}
+
+.testimonial-cards {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+}
+
+article.testimonial {
+  max-width: 18.75rem; /* 300px */
+  background-color: #fff;
+  padding: 2rem;
+  gap: var(--global-padding);
+  justify-content: center;
+  border-radius: var(--cornerRadius);
+  box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+article.testimonial img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}

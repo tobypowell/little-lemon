@@ -1,7 +1,3 @@
-#footer-wrapper {
-  background-color: var(--leafLight);
-  padding: 3rem var(--global-padding);
-}
 footer {
   position: relative;
   display: grid;

@@ -1,5 +1,5 @@
 #specials {
-  padding: 6rem 0;
+  padding: 6rem var(--global-padding);
   max-width: var(--tenCol);
 }
 

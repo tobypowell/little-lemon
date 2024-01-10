@@ -1,4 +1,5 @@
 import React from 'react';
+import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
@@ -7,7 +8,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <div id='footer-wrapper'>
+    <FullWidthSection bgColor={'var(--leafLight)'}>
       <footer>
         <div id='footer-logo'>
           <img
@@ -48,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </FullWidthSection>
   );
 };
 

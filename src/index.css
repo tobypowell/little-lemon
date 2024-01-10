@@ -93,7 +93,7 @@ address {
 header,
 footer,
 section,
-.hero {
+.container {
   padding: 0 var(--global-padding);
   max-width: var(--desktop);
   width: 100%;
