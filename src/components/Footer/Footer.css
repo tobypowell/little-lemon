@@ -7,10 +7,6 @@ footer {
   padding: 4rem var(--global-padding);
 }
 
-footer a {
-  display: block;
-}
-
 #footer-logo {
   justify-self: center;
   display: flex;
@@ -36,6 +32,7 @@ footer .doormat-nav li {
 footer .doormat-nav a {
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--leaf);
+  display: block;
 }
 
 footer .links {
