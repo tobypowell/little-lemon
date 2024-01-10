@@ -33,6 +33,7 @@ footer .doormat-nav a {
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--leaf);
   display: block;
+  font-weight: 700;
 }
 
 footer .links {

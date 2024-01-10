@@ -1,7 +1,7 @@
 #about {
   padding: 6rem var(--global-padding) 4rem var(--global-padding);
   display: grid;
-  max-width: var(--tenCol);
+
   grid-template-columns: 1fr;
   gap: var(--global-padding);
 }

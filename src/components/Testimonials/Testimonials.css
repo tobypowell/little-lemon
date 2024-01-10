@@ -20,6 +20,9 @@ article.testimonial {
   box-shadow: 0px 8px 8px -8px rgba(73, 94, 87, 0.4);
   text-align: center;
 }
+article.testimonial h4 {
+  color: var(--leaf);
+}
 
 article.testimonial img {
   width: 4rem;

@@ -35,6 +35,6 @@
   .hero img {
     position: relative;
     top: 3rem;
-    grid-column: 9/-1;
+    grid-column: 8/-1;
   }
 }
