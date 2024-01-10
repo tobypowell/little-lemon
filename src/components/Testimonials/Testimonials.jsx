@@ -1,8 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
+import StarRating from '../StarRating/StarRating';
 import './Testimonials.css';
 
 const testimonials = [
@@ -28,7 +26,7 @@ const testimonials = [
     quote:
       'A risus aliquam sit eu sed sed sem quam. Vel scelerisque iaculis morbi volutpat orci. ',
     image: './imgs/woman.jpg',
-    rating: 5,
+    rating: 4,
   },
   {
     id: 4,
@@ -51,10 +49,9 @@ const Testimonials = () => {
             return (
               <article key={id} className='testimonial'>
                 <img src={image} alt={name} />
-                <h5>{name}</h5>
+                <h4>{name}</h4>
                 <p>{quote}</p>
-                {rating}
-                <FontAwesomeIcon icon={faStar} />
+                <StarRating rating={rating} />
               </article>
             );
           })}

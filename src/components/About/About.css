@@ -1,0 +1,39 @@
+#about {
+  padding: 6rem var(--global-padding) 4rem var(--global-padding);
+  display: grid;
+  max-width: var(--tenCol);
+  grid-template-columns: 1fr;
+  gap: var(--global-padding);
+}
+
+.about-text h2,
+.about-text h3 {
+  margin-bottom: 0;
+  color: var(--leaf);
+}
+
+.about-text h3 {
+  margin-bottom: var(--leading);
+  color: var(--charcoal);
+}
+
+#about img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #about {
+    max-width: var(--tenCol);
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--global-padding);
+  }
+
+  .about-text {
+    grid-column: 1/6;
+  }
+
+  #about img {
+    grid-column: 8/12;
+    width: auto;
+  }
+}

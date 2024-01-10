@@ -3,6 +3,8 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--global-padding);
+  max-width: var(--tenCol);
+  padding: 4rem var(--global-padding);
 }
 
 footer a {
@@ -11,6 +13,10 @@ footer a {
 
 #footer-logo {
   justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #footer-logo img {
@@ -20,8 +26,7 @@ footer a {
 
 .copyright {
   font-size: 0.75rem;
-  position: absolute;
-  bottom: 0;
+  margin-bottom: 0.25rem;
 }
 
 /* FOOTER DOORMAT NAV */
@@ -51,6 +56,7 @@ footer .links a:hover {
   }
   #footer-logo {
     justify-self: left;
+    align-items: flex-start;
   }
   #footer-logo img {
     max-width: 5rem;

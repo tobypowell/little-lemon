@@ -1,20 +1,23 @@
 .testimonials {
   padding: 6rem var(--global-padding);
+  text-align: center;
 }
 
 .testimonial-cards {
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr 3fr;
+  grid-template-columns: 1fr;
+  gap: var(--global-padding);
 }
 
 article.testimonial {
   max-width: 18.75rem; /* 300px */
   background-color: #fff;
   padding: 2rem;
-  gap: var(--global-padding);
+
   justify-content: center;
   border-radius: var(--cornerRadius);
-  box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0px 8px 8px -8px rgba(73, 94, 87, 0.4);
   text-align: center;
 }
 
@@ -22,4 +25,10 @@ article.testimonial img {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .testimonial-cards {
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+  }
 }
