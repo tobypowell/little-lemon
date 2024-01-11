@@ -1,31 +1,37 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import './BookingForm.css';
 
-const BookingForm = () => {
-  const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-  const bookingEvent = ['Birthday', 'Anniversary'];
-
-  const [bookingDate, setBookingDate] = useState('');
-  const [bookingTime, setBookingTime] = useState(availableTimes[0]);
-  const [numOfGuests, setNumOfGuests] = useState(0);
-  const [occasion, setOccasion] = useState(bookingEvent[0]);
-
+const BookingForm = ({
+  availableTimes,
+  bookingEvent,
+  createReservation,
+  bookingDate,
+  setBookingDate,
+  bookingTime,
+  setBookingTime,
+  numOfGuests,
+  setNumOfGuests,
+  occasion,
+  setOccasion,
+  displayAvailableTimes,
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newBooking = {
+
+    createReservation({
       bookingDate,
       bookingTime,
       numOfGuests,
       occasion,
-    };
-
-    console.log(newBooking);
-    // Reset form fields
-    setBookingDate('');
-    setBookingTime(availableTimes[0]);
-    setNumOfGuests(0);
-    setOccasion(bookingEvent[0]);
+    });
   };
+
+  const handleDateChange = (e) => {
+    setBookingDate((curr) => {
+      return (curr = e.target.value);
+    });
+  };
+
   return (
     <form className='booking-form' onSubmit={handleSubmit}>
       <label htmlFor='res-date'>
@@ -34,7 +40,8 @@ const BookingForm = () => {
           value={bookingDate}
           type='date'
           id='res-date'
-          onChange={(e) => setBookingDate(e.target.value)}
+          onChange={(e) => handleDateChange(e)}
+          required
         />
       </label>
       <label htmlFor='res-time'>
@@ -43,8 +50,8 @@ const BookingForm = () => {
           id='res-time'
           value={bookingTime}
           onChange={(e) => setBookingTime(e.target.value)}>
-          {availableTimes.map((time) => (
-            <option key={time} value={time}>
+          {availableTimes.map((time, idx) => (
+            <option key={idx} value={time}>
               {time}
             </option>
           ))}
