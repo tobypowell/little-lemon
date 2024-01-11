@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from '../Layout';
 import BookingForm from '../BookingForm/BookingForm';
 
+//TODO - Lift up state
+
 const BookingPage = () => {
   return (
     <Layout>
