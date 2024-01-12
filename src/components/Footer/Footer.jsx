@@ -40,10 +40,10 @@ const Footer = () => {
         <div className='social-media'>
           <h5>Follow us:</h5>
           <div className='links'>
-            <a href='#' title='Facebook'>
+            <a href='https://facebook.com' title='Facebook'>
               <FontAwesomeIcon size='2x' icon={faFacebook} />
             </a>
-            <a href='#' title='Instagram'>
+            <a href='https://instagram.com' title='Instagram'>
               <FontAwesomeIcon size='2x' icon={faInstagram} />
             </a>
           </div>

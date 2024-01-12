@@ -1,6 +1,25 @@
+.bookingPage {
+  background-image: url(../../restaurant.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.bookingPage::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  backdrop-filter: blur(0.25rem);
+}
+
 #booking {
-  padding: 6rem var(--global-padding);
-  max-width: var(--tenCol);
+  padding: 6rem 0;
+  position: relative;
+  z-index: 2;
 }
 
 #booking h1 {
@@ -8,9 +27,11 @@
 }
 
 form.booking-form {
+  flex: 2 0 auto;
   margin: 3rem auto;
   display: grid;
   max-width: 500px;
+
   border-radius: var(--cornerRadius);
   background-color: var(--leafLight);
   padding: 3rem;

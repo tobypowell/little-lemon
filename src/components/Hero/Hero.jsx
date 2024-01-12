@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import CTAButton from '../CTAButton/CTAButton';
 import './Hero.css';
@@ -17,7 +19,9 @@ const Hero = () => {
             praesent.
           </p>
 
-          <CTAButton>Reserve a table</CTAButton>
+          <Link to='./booking' title='Reserve a table' className='cta'>
+            Reserve a table
+          </Link>
         </div>
 
         <img

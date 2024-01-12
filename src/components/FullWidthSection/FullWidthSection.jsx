@@ -1,9 +1,11 @@
 import React from 'react';
 import './FullWidthSection.css';
 
-const FullWidthSection = ({ children, bgColor }) => {
+const FullWidthSection = ({ children, bgColor, classes }) => {
   return (
-    <section className='wrapper' style={{ backgroundColor: `${bgColor}` }}>
+    <section
+      className={`wrapper ${classes}`}
+      style={{ backgroundColor: `${bgColor}` }}>
       {children}
     </section>
   );

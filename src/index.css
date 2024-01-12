@@ -96,22 +96,24 @@ a.active {
 }
 
 button,
-input[type='submit'] {
+input[type='submit'],
+a.cta {
   border: none;
   background-color: var(--lemon);
   padding: 1rem 2rem;
   border-radius: var(--cornerRadiusSm);
   font-weight: 700;
   font-size: var(--base);
-
+  display: block;
   cursor: pointer;
   width: 100%;
-
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 button:hover,
-input[type='submit']:hover {
+input[type='submit']:hover,
+a.cta:hover {
   background-color: var(--charcoal);
   color: var(--leafLight);
 }

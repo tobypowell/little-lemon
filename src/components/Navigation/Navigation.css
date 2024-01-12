@@ -6,7 +6,7 @@
 /* MAIN NAV BAR STYLES */
 .main-nav {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top: 5rem;
   left: 0;
 

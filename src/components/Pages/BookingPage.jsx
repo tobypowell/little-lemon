@@ -1,6 +1,8 @@
-import { useState, useReducer, useEffect, useCallback, useMemo } from 'react';
+import { useState, useReducer, useEffect, useCallback } from 'react';
 import Layout from '../Layout';
+import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import BookingForm from '../BookingForm/BookingForm';
+import { fetchAPI, submitAPI } from '../../utils/fakeApi';
 
 // update booking form to display available times based on the selected date
 
@@ -13,8 +15,7 @@ const updateTimesReducer = (availableTimes, action) => {
       return [...availableTimes, action.reservation.bookingTime];
     }
     case 'displayAvailableTimes': {
-      console.log('IN: ', action);
-      return [...availableTimes, action.bookingDate];
+      return [...availableTimes];
     }
     default: {
       throw Error('Unkown action: ', +action.type);
@@ -32,9 +33,14 @@ const BookingPage = () => {
     '22:00',
   ];
 
+  const updateTimes = (availableTimes) => {
+    return [...availableTimes];
+  };
+
   const [availableTimes, dispatch] = useReducer(
     updateTimesReducer,
-    initializeTimes
+    initializeTimes,
+    updateTimes
   );
 
   const bookingEvent = ['Birthday', 'Anniversary'];
@@ -57,33 +63,39 @@ const BookingPage = () => {
     setOccasion(bookingEvent[0]);
   };
 
-  const displayAvailableTimes = (bookingDate) => {
-    console.log('captured: ', availableTimes);
-    dispatch({
-      type: 'displayAvailableTimes',
-      date: bookingDate,
-    });
+  const dateChange = async () => {
+    if (bookingDate !== '') {
+      const res = await fetchAPI(bookingDate);
+      console.log('FAKE API: ', res);
+      dispatch({
+        type: 'displayAvailableTimes',
+        date: bookingDate,
+      });
+    }
   };
 
   return (
     <Layout>
-      <section className='container' id='booking'>
-        <h1>Booking Page</h1>
-        <BookingForm
-          availableTimes={availableTimes}
-          bookingEvent={bookingEvent}
-          createReservation={createReservation}
-          bookingDate={bookingDate}
-          bookingTime={bookingTime}
-          numOfGuests={numOfGuests}
-          occasion={occasion}
-          setBookingDate={setBookingDate}
-          setBookingTime={setBookingTime}
-          setNumOfGuests={setNumOfGuests}
-          setOccasion={setOccasion}
-          displayAvailableTimes={displayAvailableTimes}
-        />
-      </section>
+      <FullWidthSection classes='bookingPage' bgColor={''}>
+        <section className='container' id='booking'>
+          <h1>Booking Page</h1>
+
+          <BookingForm
+            availableTimes={availableTimes}
+            bookingEvent={bookingEvent}
+            createReservation={createReservation}
+            bookingDate={bookingDate}
+            bookingTime={bookingTime}
+            numOfGuests={numOfGuests}
+            occasion={occasion}
+            setBookingDate={setBookingDate}
+            setBookingTime={setBookingTime}
+            setNumOfGuests={setNumOfGuests}
+            setOccasion={setOccasion}
+            dateChange={dateChange}
+          />
+        </section>
+      </FullWidthSection>
     </Layout>
   );
 };
