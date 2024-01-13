@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import TimeButtons from '../TimeButtons/TimeButtons';
 import './BookingForm.css';
 
 const BookingForm = ({
@@ -13,7 +13,7 @@ const BookingForm = ({
   setNumOfGuests,
   occasion,
   setOccasion,
-  dateChange,
+  initializeTimes,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const BookingForm = ({
 
   const handleChange = (e) => {
     setBookingDate(e.target.value);
-    dateChange();
+    initializeTimes(bookingDate);
   };
 
   return (
@@ -46,17 +46,9 @@ const BookingForm = ({
         </label>
         <label htmlFor='res-time'>
           Choose time
-          <select
-            id='res-time'
-            value={bookingTime}
-            onChange={(e) => setBookingTime(e.target.value)}>
-            {availableTimes.map((time, idx) => (
-              <option key={idx} value={time}>
-                {time}
-              </option>
-            ))}
-          </select>
+          <TimeButtons availableTimes={availableTimes} />
         </label>
+
         <label htmlFor='guests'>
           Number of guests
           <input

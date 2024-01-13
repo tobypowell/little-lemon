@@ -8,8 +8,9 @@ const seededRandom = (seed) => {
 
 const fetchAPI = (date) => {
   let result = [];
-  let random = seededRandom(date.getDate());
+  let random = seededRandom(new Date(date).getDate());
 
+  // loop through and if the rand num is higher or lower append :00 or :30 accordingly
   for (let i = 17; i <= 23; i++) {
     if (random() < 0.5) result.push(i + ':00');
     if (random() < 0.5) result.push(i + ':30');

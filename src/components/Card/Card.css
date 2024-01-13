@@ -32,9 +32,19 @@
 
 .card a {
   font-weight: 700;
-  display: inline-block;
+  background-color: var(--lemon);
+  font-weight: 800;
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
 
-.card a img {
+.card a:hover {
+  background-color: var(--charcoal);
+  color: var(--leafLight);
+}
+
+.card a svg {
   margin-left: 0.5rem;
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 import './Card.css';
 
 const Card = ({ name, image, price, description }) => {
@@ -10,11 +12,10 @@ const Card = ({ name, image, price, description }) => {
           {name} <span>${price}</span>
         </h3>
         <p>{description}</p>
-        <a href='/' title='Order a delivery'>
-          Order a delivery
-          <img src='./imgs/scooter.svg' alt='Order a delivery' />
-        </a>
       </div>
+      <a href='/' title='Order a delivery'>
+        Order a delivery <FontAwesomeIcon icon={faBicycle} />
+      </a>
     </div>
   );
 };

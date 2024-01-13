@@ -14,6 +14,8 @@
   --charcoal: #333;
   --salmon: #ee9972;
   --lightSalmon: #fbdabb;
+  --disabled: #ccc;
+  --mdGray: #888;
 
   /* TYPE */
   --karla: 'Karla', sans-serif;
@@ -130,7 +132,7 @@ address {
   font-style: normal;
 }
 
-input,
+input:not([type='radio']),
 select,
 textarea {
   padding: var(--baseSize);
