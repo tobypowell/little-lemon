@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import TimeSlotBtn from '../TimeSlotBtn/TimeSlotBtn';
 import './TimeButtons.css';
 
-const TimeButtons = ({ availableTimes }) => {
-  const times = [
+const TimeButtons = ({ availableTimes, setBookingTime }) => {
+  const timesArr = [
     '17:00',
     '17:30',
     '18:00',
@@ -19,62 +19,32 @@ const TimeButtons = ({ availableTimes }) => {
     '23:30',
   ];
 
+  // Determine what the available times are:
+  // loop through timesArr
+  // for each loop iteration check to see if availableTimes[i] matches an item in timesArr
+  // if it exists push in array, if it doesn't exisit push in with disabled status
   const btns = [];
-
-  const compareArr = (a1, a2) => {
+  const compareArr = (times, avTimes) => {
     for (let i = 0; i < times.length; i++) {
-      const t = a2.find((e) => e === a1[i]);
-      if (t === undefined) {
-        btns.push(<TimeBtn key={i} status={true} time={a1[i]} />);
-      } else {
-        btns.push(<TimeBtn key={i} time={a1[i]} />);
-      }
+      // will either rettun a time eg: 17:00 or undefined
+      const time = avTimes.find((t) => t === times[i]);
+
+      // push the item in the btn array, and set the
+      // disabled status based on whether time is undefined or not
+      btns.push(
+        <TimeSlotBtn
+          key={i}
+          id={i}
+          status={time === undefined ? true : false}
+          time={times[i]}
+          setBookingTime={setBookingTime}
+        />
+      );
     }
   };
-  compareArr(times, availableTimes);
+  compareArr(timesArr, availableTimes);
 
   return <div className='availableTimes'>{btns}</div>;
 };
 
-const TimeBtn = ({ time, status }) => {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = (e) => {
-    setChecked(!checked);
-  };
-  const classes = checked ? 'checked ' : 'label-text';
-  return (
-    // <button
-    //   disabled={status}
-    //   className={`${selected ? 'selected' : ''}`}
-    //   onClick={() => handleClicked(time)}>
-    //   {time}
-    // </button>
-
-    <label className={`radio-label ${status ? 'disable' : ''}`} htmlFor='time'>
-      <input
-        disabled={status}
-        className='radio-input'
-        name='time'
-        type='radio'
-        checked={checked}
-        value={time}
-        onChange={handleChange}
-      />
-      <span className='custom-radio' />
-      <span className='label-text'>{time}</span>
-    </label>
-  );
-};
-
 export default TimeButtons;
-
-/*
- - make an array of all the button
- 
-click btn 
-  - grab id from btn clicked
-  - remove selected class from all btns that dont have that id
-  - add selected class to btn clicked based on id
-
-*/

@@ -19,22 +19,19 @@ const updateTimesReducer = (availableTimes, action) => {
     }
   }
 };
+let today = new Date().toLocaleDateString('en-GB');
+today = today.split('/').reverse().join().replaceAll(',', '-');
 
 const BookingPage = () => {
   const bookingEvent = ['Birthday', 'Anniversary'];
-  const [bookingDate, setBookingDate] = useState('');
+  const [bookingDate, setBookingDate] = useState(today);
   const [bookingTime, setBookingTime] = useState('');
   const [numOfGuests, setNumOfGuests] = useState(0);
   const [occasion, setOccasion] = useState(bookingEvent[0]);
 
-  const times = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-
   // initialize times of first render
-  useEffect(() => {
-    initializeTimes(new Date());
-  }, []);
-
-  const initializeTimes = (bookingDate) => {
+  // no available times yet, until a date is selected
+  const initializeTimes = useCallback((bookingDate) => {
     if (bookingDate !== '') {
       const times = fetchAPI(bookingDate);
 
@@ -43,9 +40,13 @@ const BookingPage = () => {
         times,
       });
     }
-  };
+  }, []);
 
-  const [availableTimes, dispatch] = useReducer(updateTimesReducer, times);
+  useEffect(() => {
+    initializeTimes(today);
+  }, [initializeTimes]);
+
+  const [availableTimes, dispatch] = useReducer(updateTimesReducer, []);
 
   const createReservation = (reservation) => {
     const response = submitAPI();
@@ -58,15 +59,15 @@ const BookingPage = () => {
     console.log('res :', response);
 
     // Reset form fields
-    setBookingDate('');
-    setBookingTime(availableTimes[0]);
+    setBookingDate(today);
+    setBookingTime('');
     setNumOfGuests(0);
     setOccasion(bookingEvent[0]);
   };
 
   return (
     <Layout>
-      <FullWidthSection classes='bookingPage' bgColor={''}>
+      <FullWidthSection classes='bookingPage' bgColor={'transparent'}>
         <section className='container' id='booking'>
           <h1>Booking Page</h1>
           <BookingForm

@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import TimeButtons from '../TimeButtons/TimeButtons';
 import './BookingForm.css';
 
@@ -17,7 +20,6 @@ const BookingForm = ({
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-
     createReservation({
       bookingDate,
       bookingTime,
@@ -26,47 +28,63 @@ const BookingForm = ({
     });
   };
 
+  useEffect(() => {
+    initializeTimes(bookingDate);
+  }, [bookingDate, initializeTimes]);
+
   const handleChange = (e) => {
     setBookingDate(e.target.value);
-    initializeTimes(bookingDate);
   };
+
+  const formik = useFormik({
+    initialValues: {
+      resDate: bookingDate,
+      guests: 1,
+      event: 'Birthday',
+    },
+    onSubmit: (values) => {
+      console.log('VALS: ', values);
+      console.log(bookingDate);
+      createReservation(bookingDate, bookingTime, numOfGuests, occasion);
+    },
+  });
 
   return (
     <div className='form-wrapper'>
-      <form className='booking-form' onSubmit={handleSubmit}>
-        <label htmlFor='res-date'>
+      <form className='booking-form' onSubmit={formik.handleSubmit}>
+        <label htmlFor='resDate'>
           Choose date
           <input
-            value={bookingDate}
             type='date'
-            id='res-date'
-            onChange={handleChange}
-            required
+            id='resDate'
+            {...formik.getFieldProps('resDate')}
           />
         </label>
         <label htmlFor='res-time'>
           Choose time
-          <TimeButtons availableTimes={availableTimes} />
+          <TimeButtons
+            availableTimes={availableTimes}
+            setBookingTime={setBookingTime}
+          />
         </label>
 
         <label htmlFor='guests'>
           Number of guests
           <input
-            value={numOfGuests}
             onChange={(e) => setNumOfGuests(e.target.value)}
             type='number'
-            placeholder='1'
             min='1'
             max='10'
             id='guests'
+            {...formik.getFieldProps('guests')}
           />
         </label>
         <label htmlFor='occasion'>
           Occasion
           <select
             id='occasion'
-            value={occasion}
-            onChange={(e) => setOccasion(e.target.value)}>
+            onChange={(e) => setOccasion(e.target.value)}
+            {...formik.getFieldProps('event')}>
             {bookingEvent.map((event) => (
               <option key={event} value={event}>
                 {event}
@@ -74,11 +92,7 @@ const BookingForm = ({
             ))}
           </select>
         </label>
-        <input
-          className='form-submit'
-          type='submit'
-          value='Make Your reservation'
-        />
+        <input className='form-submit' type='submit' value='Make Reservation' />
       </form>
     </div>
   );
