@@ -1,7 +1,7 @@
 import TimeSlotBtn from '../TimeSlotBtn/TimeSlotBtn';
 import './TimeButtons.css';
 
-const TimeButtons = ({ availableTimes, setBookingTime }) => {
+const TimeButtons = ({ availableTimes, setBookingTime, handleChecked }) => {
   const timesArr = [
     '17:00',
     '17:30',
@@ -38,6 +38,7 @@ const TimeButtons = ({ availableTimes, setBookingTime }) => {
           status={time === undefined ? true : false}
           time={times[i]}
           setBookingTime={setBookingTime}
+          handleChecked={handleChecked}
         />
       );
     }

@@ -1,4 +1,5 @@
-import { useState, useReducer, useEffect, useCallback } from 'react';
+import { useState, useReducer, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout';
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import BookingForm from '../BookingForm/BookingForm';
@@ -19,12 +20,11 @@ const updateTimesReducer = (availableTimes, action) => {
     }
   }
 };
-let today = new Date().toLocaleDateString('en-GB');
-today = today.split('/').reverse().join().replaceAll(',', '-');
 
 const BookingPage = () => {
+  const navigate = useNavigate();
   const bookingEvent = ['Birthday', 'Anniversary'];
-  const [bookingDate, setBookingDate] = useState(today);
+  const [bookingDate, setBookingDate] = useState();
   const [bookingTime, setBookingTime] = useState('');
   const [numOfGuests, setNumOfGuests] = useState(0);
   const [occasion, setOccasion] = useState(bookingEvent[0]);
@@ -34,7 +34,6 @@ const BookingPage = () => {
   const initializeTimes = useCallback((bookingDate) => {
     if (bookingDate !== '') {
       const times = fetchAPI(bookingDate);
-
       dispatch({
         type: 'displayAvailableTimes',
         times,
@@ -42,27 +41,33 @@ const BookingPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    initializeTimes(today);
-  }, [initializeTimes]);
-
   const [availableTimes, dispatch] = useReducer(updateTimesReducer, []);
 
-  const createReservation = (reservation) => {
-    const response = submitAPI();
-    console.log('new reservation: ', reservation);
+  const createReservation = ({
+    bookingDate,
+    bookingTime,
+    numOfGuests,
+    occasion,
+  }) => {
     dispatch({
       type: 'change',
-      reservation,
+      reservation: {
+        bookingDate,
+        bookingTime,
+        numOfGuests,
+        occasion,
+      },
     });
-
-    console.log('res :', response);
+    const response = submitAPI();
+    console.log('API res :', response);
 
     // Reset form fields
-    setBookingDate(today);
+    setBookingDate('');
     setBookingTime('');
     setNumOfGuests(0);
     setOccasion(bookingEvent[0]);
+
+    navigate('/');
   };
 
   return (

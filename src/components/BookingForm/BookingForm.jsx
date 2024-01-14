@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useEffect, useState } from 'react';
 import TimeButtons from '../TimeButtons/TimeButtons';
+import FormError from '../FormError/FormError';
 import './BookingForm.css';
 
 const BookingForm = ({
@@ -18,73 +17,95 @@ const BookingForm = ({
   setOccasion,
   initializeTimes,
 }) => {
+  const [dateErr, setDateErr] = useState(false);
+  const [timeErr, setTimeErr] = useState(false);
+  const [guestErr, setGuestErr] = useState(false);
+
+  const handleChange = (e) => {
+    setBookingDate(e.target.value);
+    setDateErr(false);
+  };
+
+  const handleChecked = (e) => {
+    setBookingTime(e.target.value);
+    setTimeErr(false);
+  };
+
+  const handleGuestChange = (e) => {
+    setNumOfGuests(e.target.value);
+    setGuestErr(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    createReservation({
-      bookingDate,
-      bookingTime,
-      numOfGuests,
-      occasion,
-    });
+
+    // Validation;
+    if (bookingDate === undefined) {
+      setDateErr(true);
+    }
+    if (bookingTime === '') {
+      setTimeErr(true);
+    }
+    if (numOfGuests <= 0) {
+      setGuestErr(true);
+    }
+    if (bookingDate && bookingTime && numOfGuests && occasion) {
+      createReservation({
+        bookingDate,
+        bookingTime,
+        numOfGuests,
+        occasion,
+      });
+    }
   };
 
   useEffect(() => {
     initializeTimes(bookingDate);
   }, [bookingDate, initializeTimes]);
 
-  const handleChange = (e) => {
-    setBookingDate(e.target.value);
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      resDate: bookingDate,
-      guests: 1,
-      event: 'Birthday',
-    },
-    onSubmit: (values) => {
-      console.log('VALS: ', values);
-      console.log(bookingDate);
-      createReservation(bookingDate, bookingTime, numOfGuests, occasion);
-    },
-  });
-
   return (
     <div className='form-wrapper'>
-      <form className='booking-form' onSubmit={formik.handleSubmit}>
-        <label htmlFor='resDate'>
+      <form className='booking-form' onSubmit={handleSubmit} noValidate>
+        <label htmlFor='res-date'>
           Choose date
           <input
+            value={`${bookingDate}`}
             type='date'
-            id='resDate'
-            {...formik.getFieldProps('resDate')}
+            id='res-date'
+            onChange={handleChange}
+            required
           />
+          {dateErr && <FormError>Please select a date</FormError>}
         </label>
         <label htmlFor='res-time'>
           Choose time
           <TimeButtons
             availableTimes={availableTimes}
             setBookingTime={setBookingTime}
+            handleChecked={handleChecked}
           />
+          {timeErr && <FormError>Please select a time</FormError>}
         </label>
 
         <label htmlFor='guests'>
           Number of guests
           <input
-            onChange={(e) => setNumOfGuests(e.target.value)}
+            value={numOfGuests}
+            onChange={handleGuestChange}
             type='number'
+            placeholder='1'
             min='1'
             max='10'
             id='guests'
-            {...formik.getFieldProps('guests')}
           />
+          {guestErr && <FormError>Please add at least 1 guest</FormError>}
         </label>
         <label htmlFor='occasion'>
           Occasion
           <select
             id='occasion'
-            onChange={(e) => setOccasion(e.target.value)}
-            {...formik.getFieldProps('event')}>
+            value={occasion}
+            onChange={(e) => setOccasion(e.target.value)}>
             {bookingEvent.map((event) => (
               <option key={event} value={event}>
                 {event}

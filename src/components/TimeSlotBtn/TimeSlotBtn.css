@@ -43,6 +43,10 @@
   border: 1px solid #bbb;
 }
 
+.radio-input:disabled {
+  cursor: default;
+}
+
 label.disable {
   color: var(--mdGray);
 }

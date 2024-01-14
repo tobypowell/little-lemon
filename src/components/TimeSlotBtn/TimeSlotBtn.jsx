@@ -1,12 +1,6 @@
-import { useState } from 'react';
-
 import './TimeSlotBtn.css';
 
-const TimeSlotBtn = ({ time, status, id, setBookingTime }) => {
-  const handleChecked = (e) => {
-    setBookingTime(e.target.value);
-  };
-
+const TimeSlotBtn = ({ time, status, id, handleChecked }) => {
   return (
     <label
       className={`radio-label ${status ? 'disable' : ''}`}
