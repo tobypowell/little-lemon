@@ -14,6 +14,7 @@
 .hero img {
   border-radius: var(--cornerRadius);
   width: 100%;
+  height: auto;
   box-shadow: 0 1rem 2rem -1rem rgba(51, 51, 51, 0.8);
 }
 

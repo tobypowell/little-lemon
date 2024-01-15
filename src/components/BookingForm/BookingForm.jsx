@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import TimeButtons from '../TimeButtons/TimeButtons';
 import FormError from '../FormError/FormError';
+import Loader from '../Loader/Loader';
 import './BookingForm.css';
 
 const BookingForm = ({
@@ -16,6 +17,7 @@ const BookingForm = ({
   occasion,
   setOccasion,
   initializeTimes,
+  loading,
 }) => {
   const [dateErr, setDateErr] = useState(false);
   const [timeErr, setTimeErr] = useState(false);
@@ -113,7 +115,9 @@ const BookingForm = ({
             ))}
           </select>
         </label>
-        <input className='form-submit' type='submit' value='Make Reservation' />
+        <button type='submit' className='form-submit'>
+          {loading ? <Loader /> : 'Make Reservation'}
+        </button>
       </form>
     </div>
   );

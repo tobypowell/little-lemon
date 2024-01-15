@@ -17,7 +17,12 @@ const About = () => {
         </p>
       </div>
 
-      <img src='./imgs/about.png' alt='About Little Lemon' />
+      <img
+        src='./imgs/about.png'
+        alt='About Little Lemon'
+        width='445'
+        height='391'
+      />
     </section>
   );
 };

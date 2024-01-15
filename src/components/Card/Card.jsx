@@ -6,7 +6,7 @@ import './Card.css';
 const Card = ({ name, image, price, description }) => {
   return (
     <div className='card'>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} width='300' height='209' />
       <div className='body'>
         <h3>
           {name} <span>${price}</span>

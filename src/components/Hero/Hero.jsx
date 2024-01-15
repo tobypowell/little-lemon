@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
-import CTAButton from '../CTAButton/CTAButton';
 import './Hero.css';
 
 const Hero = () => {
@@ -28,6 +27,8 @@ const Hero = () => {
           className='hero-img'
           src='./imgs/heroImg.jpg'
           alt='Little Lemon Chicago'
+          width='416'
+          height='535'
         />
       </div>
     </FullWidthSection>

@@ -37,8 +37,8 @@ form.booking-form {
   box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.6);
 }
 
-form.booking-form input[type='submit'] {
-  border: none;
+form.booking-form button[type='submit'] {
+  height: 3.5rem;
 }
 
 form.booking-form .error {
