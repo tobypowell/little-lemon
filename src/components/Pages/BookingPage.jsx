@@ -3,16 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout';
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import BookingForm from '../BookingForm/BookingForm';
+import SuccessModal from '../SuccessModal/SuccessModal';
 import { fetchAPI, submitAPI } from '../../utils/fakeApi';
 
 // dispatcher
 // change available times based on selected date
 const updateTimesReducer = (availableTimes, action) => {
   switch (action.type) {
-    case 'change': {
+    case 'createReservation': {
       return [...availableTimes];
     }
     case 'displayAvailableTimes': {
+      console.log(action);
       return [...action.times];
     }
     default: {
@@ -31,6 +33,10 @@ const BookingPage = () => {
 
   // initialize times of first render
   // no available times yet, until a date is selected
+  const intialState = {
+    times: [],
+    reservation: {},
+  };
   const initializeTimes = useCallback((bookingDate) => {
     if (bookingDate !== '') {
       const times = fetchAPI(bookingDate);
@@ -50,7 +56,7 @@ const BookingPage = () => {
     occasion,
   }) => {
     dispatch({
-      type: 'change',
+      type: 'createReservation',
       reservation: {
         bookingDate,
         bookingTime,
@@ -67,7 +73,7 @@ const BookingPage = () => {
     setNumOfGuests(0);
     setOccasion(bookingEvent[0]);
 
-    navigate('/');
+    // navigate('/');
   };
 
   return (
@@ -89,6 +95,7 @@ const BookingPage = () => {
             setOccasion={setOccasion}
             initializeTimes={initializeTimes}
           />
+          <SuccessModal reservation={'reservation'} />
         </section>
       </FullWidthSection>
     </Layout>

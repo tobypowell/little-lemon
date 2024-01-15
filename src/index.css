@@ -146,7 +146,8 @@ textarea {
   width: 100%;
 }
 
-label {
+label,
+form h5 {
   font-size: var(--leadText);
   font-weight: 700;
   color: var(--leaf);

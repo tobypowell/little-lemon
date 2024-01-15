@@ -77,15 +77,15 @@ const BookingForm = ({
           />
           {dateErr && <FormError>Please select a date</FormError>}
         </label>
-        <label htmlFor='res-time'>
-          Choose time
+        <div className='time-slots'>
+          <h5>Choose time</h5>
           <TimeButtons
             availableTimes={availableTimes}
             setBookingTime={setBookingTime}
             handleChecked={handleChecked}
           />
           {timeErr && <FormError>Please select a time</FormError>}
-        </label>
+        </div>
 
         <label htmlFor='guests'>
           Number of guests
