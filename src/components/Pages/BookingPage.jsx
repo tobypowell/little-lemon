@@ -36,7 +36,7 @@ const BookingPage = () => {
     <Layout>
       <FullWidthSection classes='bookingPage' bgColor={'transparent'}>
         <section className='container' id='booking'>
-          <h1>Booking Page</h1>
+          <h1>Make a reservation</h1>
           <BookingForm
             bookingEvent={bookingEvent}
             availableTimes={state.times}

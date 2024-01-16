@@ -107,7 +107,7 @@ a.cta {
   border-radius: var(--cornerRadiusSm);
   font-weight: 700;
   font-size: var(--base);
-  display: block;
+  display: inline-block;
   cursor: pointer;
   width: 100%;
   transition: all 0.3s ease;
@@ -196,6 +196,7 @@ main {
 
 @media screen and (min-width: 768px) {
   button.cta,
+  a.cta,
   input[type='submit'] {
     width: auto;
   }
