@@ -9,9 +9,6 @@ const BoookingConfirmationPage = ({ vals }) => {
       <section
         className='container'
         style={{ marginTop: '5%', textAlign: 'center' }}>
-        <h1 style={{ color: 'var(--leaf)', marginBottom: '2rem' }}>
-          Booking Confirmed
-        </h1>
         <ConfirmationDetails />
       </section>
     </Layout>

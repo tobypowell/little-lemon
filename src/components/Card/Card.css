@@ -13,12 +13,12 @@
 }
 
 .card .body {
-  padding: 1rem var(--leading) var(--leading);
+  padding: 0.5rem var(--leading) 2rem var(--leading);
 }
 
 .card h3 {
   color: var(--charcoal);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   display: flex;
   justify-content: space-between;
   font-family: var(--karla);
