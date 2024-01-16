@@ -7,21 +7,17 @@ import './BookingForm.css';
 const BookingForm = ({
   availableTimes,
   bookingEvent,
-  createReservation,
-  bookingDate,
-  setBookingDate,
-  bookingTime,
-  setBookingTime,
-  numOfGuests,
-  setNumOfGuests,
-  occasion,
-  setOccasion,
+  submitForm,
   initializeTimes,
   loading,
 }) => {
   const [dateErr, setDateErr] = useState(false);
   const [timeErr, setTimeErr] = useState(false);
   const [guestErr, setGuestErr] = useState(false);
+  const [bookingDate, setBookingDate] = useState();
+  const [bookingTime, setBookingTime] = useState('');
+  const [numOfGuests, setNumOfGuests] = useState(0);
+  const [occasion, setOccasion] = useState(bookingEvent[0]);
 
   const handleChange = (e) => {
     setBookingDate(e.target.value);
@@ -52,12 +48,7 @@ const BookingForm = ({
       setGuestErr(true);
     }
     if (bookingDate && bookingTime && numOfGuests && occasion) {
-      createReservation({
-        bookingDate,
-        bookingTime,
-        numOfGuests,
-        occasion,
-      });
+      submitForm(bookingDate, bookingTime, numOfGuests, occasion);
     }
   };
 

@@ -1,64 +1,24 @@
-import { useState, useReducer, useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout';
 import FullWidthSection from '../FullWidthSection/FullWidthSection';
 import BookingForm from '../BookingForm/BookingForm';
 
-import { fetchAPI, submitAPI } from '../../utils/fakeApi';
-
-// dispatcher
-// change available times based on selected date
-const updateTimesReducer = (state, action) => {
-  switch (action.type) {
-    case 'createReservation': {
-      return {
-        ...state,
-        reservation: action.reservation,
-      };
-    }
-    case 'displayAvailableTimes': {
-      return {
-        times: [...action.times],
-      };
-    }
-    default: {
-      throw Error('Unkown action: ', +action.type);
-    }
-  }
-};
+import { useGlobalContext } from '../../Context/ReservationProvider';
 
 const BookingPage = () => {
-  const intialState = {
-    times: [],
-    reservation: {},
-  };
+  const { state, initializeTimes, createReservation, loading, setLoading } =
+    useGlobalContext();
+
   const navigate = useNavigate();
   const bookingEvent = ['Birthday', 'Anniversary'];
-  const [bookingDate, setBookingDate] = useState();
-  const [bookingTime, setBookingTime] = useState('');
-  const [numOfGuests, setNumOfGuests] = useState(0);
-  const [occasion, setOccasion] = useState(bookingEvent[0]);
-  const [loading, setLoading] = useState(false);
-  const [state, dispatch] = useReducer(updateTimesReducer, intialState);
-
-  // initialize times of first render
-  // no available times yet, until a date is selected
-
-  const initializeTimes = useCallback((bookingDate) => {
-    if (bookingDate !== '') {
-      const times = fetchAPI(bookingDate);
-      dispatch({
-        type: 'displayAvailableTimes',
-        times,
-      });
-    }
-  }, []);
 
   useEffect(() => {
     // Simulate Api fetch
     let timeout;
     if (loading) {
       timeout = setTimeout(() => {
+        setLoading(false);
         navigate('/confirmed');
       }, 5000);
     }
@@ -66,29 +26,10 @@ const BookingPage = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [loading, navigate]);
+  }, [loading, setLoading, navigate]);
 
-  const createReservation = ({
-    bookingDate,
-    bookingTime,
-    numOfGuests,
-    occasion,
-  }) => {
-    dispatch({
-      type: 'createReservation',
-      reservation: {
-        bookingDate,
-        bookingTime,
-        numOfGuests,
-        occasion,
-      },
-    });
-    submitForm();
-  };
-
-  const submitForm = () => {
-    setLoading(true);
-    submitAPI();
+  const submitForm = (bookingDate, bookingTime, numOfGuests, occasion) => {
+    createReservation(bookingDate, bookingTime, numOfGuests, occasion);
   };
 
   return (
@@ -97,19 +38,11 @@ const BookingPage = () => {
         <section className='container' id='booking'>
           <h1>Booking Page</h1>
           <BookingForm
-            availableTimes={state.times}
             bookingEvent={bookingEvent}
-            createReservation={createReservation}
-            bookingDate={bookingDate}
-            bookingTime={bookingTime}
-            numOfGuests={numOfGuests}
-            occasion={occasion}
-            setBookingDate={setBookingDate}
-            setBookingTime={setBookingTime}
-            setNumOfGuests={setNumOfGuests}
-            setOccasion={setOccasion}
+            availableTimes={state.times}
             initializeTimes={initializeTimes}
             loading={loading}
+            submitForm={submitForm}
           />
         </section>
       </FullWidthSection>
