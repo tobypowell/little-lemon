@@ -11,7 +11,7 @@ const ConfirmationDetails = ({
     <div className='confirmation-msg'>
       <img src='./imgs/confirm.jpg' alt='Booking confirmed' />
       <div className='details'>
-        <h2>That's all confirmed for:</h2>
+        <h2>Great!.. that's all confirmed for:</h2>
         <ul>
           <li>
             <strong>Date: </strong>

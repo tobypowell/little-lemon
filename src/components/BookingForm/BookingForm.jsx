@@ -62,6 +62,7 @@ const BookingForm = ({
         <label htmlFor='res-date'>
           Choose date
           <input
+            name='res-date'
             value={`${bookingDate}`}
             type='date'
             id='res-date'
@@ -106,7 +107,7 @@ const BookingForm = ({
             ))}
           </select>
         </label>
-        <button type='submit' className='form-submit'>
+        <button aria-label='on Click' type='submit' className='form-submit'>
           {loading ? <Loader /> : 'Make Reservation'}
         </button>
       </form>

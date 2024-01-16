@@ -16,7 +16,7 @@ const Header = () => {
       <Link id='logo' to='/' title='Little lemon, Home'>
         <img src='./imgs/Logo.png' alt='Little Lemon' width='148' height='40' />
       </Link>
-      <button id='mobile-nav' onClick={handleClick}>
+      <button aria-label='menu' id='mobile-nav' onClick={handleClick}>
         <img src={`./imgs/${menuIcon}.svg`} alt='Menu' />
       </button>
       <Navigation navType='main-nav' navActive={navActive} />

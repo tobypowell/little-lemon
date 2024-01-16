@@ -35,7 +35,9 @@ const Specials = () => {
     <section id='specials'>
       <div className='row'>
         <h2>Specials</h2>
-        <button className='cta'>Online Menu</button>
+        <button className='cta' aria-label='on Click'>
+          Online Menu
+        </button>
       </div>
 
       <div className='cards'>

@@ -18,7 +18,11 @@ const Hero = () => {
             praesent.
           </p>
 
-          <Link to='./booking' title='Reserve a table' className='cta'>
+          <Link
+            to='./booking'
+            title='Reserve a table'
+            aria-label='on Click'
+            className='cta'>
             Reserve a table
           </Link>
         </div>
