@@ -107,7 +107,10 @@ const BookingForm = ({
             ))}
           </select>
         </label>
-        <button aria-label='on Click' type='submit' className='form-submit'>
+        <button
+          aria-label='on Click'
+          type='submit'
+          className={`${loading && 'loading'} form-submit`}>
           {loading ? <Loader /> : 'Make Reservation'}
         </button>
       </form>

@@ -41,6 +41,10 @@ form.booking-form button[type='submit'] {
   height: 3.5rem;
 }
 
+form.booking-form button.loading {
+  background-color: var(--charcoal);
+}
+
 form.booking-form .error {
   color: var(--error);
   font-weight: 400;

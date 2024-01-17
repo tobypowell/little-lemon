@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = ({ navType, navActive }) => {
@@ -7,9 +7,9 @@ const Navigation = ({ navType, navActive }) => {
     <nav className={`navigation ${navType} ${navActive ? 'active' : ''}`}>
       <ul>
         <li>
-          <Link to='/' title='Home'>
+          <NavLink to='/' title='Home'>
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
           <a href='#' title='About'>
@@ -22,9 +22,9 @@ const Navigation = ({ navType, navActive }) => {
           </a>
         </li>
         <li>
-          <Link to='/booking' title='Reservations'>
+          <NavLink to='/booking' title='Reservations'>
             Reservations
-          </Link>
+          </NavLink>
         </li>
         <li>
           <a href='#' title='Order Online'>

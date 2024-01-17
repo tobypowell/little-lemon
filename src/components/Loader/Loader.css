@@ -1,6 +1,7 @@
 .spinner {
   transform-origin: center;
   animation: spinner 0.75s step-end infinite;
+  fill: var(--leafLight);
 }
 @keyframes spinner {
   8.3% {
