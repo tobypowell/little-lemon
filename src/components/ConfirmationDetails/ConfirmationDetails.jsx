@@ -9,7 +9,12 @@ const ConfirmationDetails = ({
 }) => {
   return (
     <div className='confirmation-msg'>
-      <img src='./imgs/confirm.jpg' alt='Booking confirmed' />
+      <img
+        src='./imgs/confirm.jpg'
+        alt='Booking confirmed'
+        width='560'
+        height='800'
+      />
       <div className='details'>
         <h2>Great!.. that's all confirmed for:</h2>
         <ul>

@@ -7,9 +7,7 @@ const BoookingConfirmationPage = () => {
 
   return (
     <Layout>
-      <section
-        className='container'
-        style={{ marginTop: '5%', textAlign: 'center' }}>
+      <section className='container' style={{ marginTop: '8%' }}>
         <ConfirmationDetails {...state.reservation} />
       </section>
     </Layout>
